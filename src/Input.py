@@ -1,14 +1,14 @@
 # Module for input handling
 
-def print_pembuka() -> None:
-# print pembuka program
-    print("Program Kurva Bezier")
-    print("Program ini digunakan untuk menampilkan kurva bezier dengan metode brute force atau divide and conquer")
-    print("Program ini juga dapat menampilkan animasi pembentukan kurva bezier")
-
 def print_batas() -> None:
 # print batas antar menu
-    print("=============================================================")
+    print("======================================================")
+
+def print_pembuka() -> None:
+# print pembuka program
+    print("+----------------------------------------------------+")
+    print("| Selamat Datang di Program Visualisasi Kurva Bezier |")
+    print("+----------------------------------------------------+")
 
 def is_float(s : str) -> bool:
 # fungsi untuk mengecek apakah suatu string dapat diubah menjadi float atau tidak

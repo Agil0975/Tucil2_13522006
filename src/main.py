@@ -154,6 +154,6 @@ if is_save:
     Animation.animate_without_pause(titik_kontrol, 0)
     Animation.animate_just_line(kurva_bezier, warna)
     # menyimpan plot ke dalam file
-    Output.save_plot_to_png(nama_file + " Plot")                                      # menyimpan hasil plot ke dalam file
+    Output.save_plot_to_png(nama_file + " Plot")                             # menyimpan hasil plot ke dalam file
     Output.save_points_to_txt(titik_kontrol, nama_file + " Titik Kontrol")   # menyimpan titik kontrol ke dalam file
     Output.save_points_to_txt(kurva_bezier, nama_file + " Titik Bezier")     # menyimpan titik bezier ke dalam file
