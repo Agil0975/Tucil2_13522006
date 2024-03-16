@@ -18,7 +18,7 @@ Program "Tucil2_13522006" merupakan program untuk membuat dan memvisualisasikan 
 Untuk menjalankan program ini, kamu perlu menginstal **Python** pada perangkat yang kamu gunakan.
 
 Selain itu, juga diperlukan library matplotlib untuk melakukan visualisasi.
-Instalasi marplotlib:
+Instalasi marplotlib: <br>
 `$ python -m pip install -U matplotlib` 
 
 ## **Cara Menjalankan Program**
