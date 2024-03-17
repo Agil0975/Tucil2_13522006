@@ -18,7 +18,7 @@ import Animation
 #       parameter animasikan yang menentukan apakah tiap iterasi akan di animasikan atau tidak
 #       parameter pause yang menentukan lama jeda antar animasi
 #   - mengembalikan list of tuple dengan
-#       jumlah titik yang dihasilkan adalah (2^(iterasi) - 1) (belum termasuk titik kontrol awal dan akhir)
+#       jumlah titik yang dihasilkan adalah (2^(iterasi) + 1) (sudah termasuk titik kontrol awal dan akhir)
 def BF_Quadratik_Bezier(Titik_Kontrol : list, iterasi : int, animasikan : bool, pause : float) -> list:
     # Inisialisasi list of tuple yang akan menampung koordinat titik-titik kurva bezier
     hasil = []
@@ -27,8 +27,8 @@ def BF_Quadratik_Bezier(Titik_Kontrol : list, iterasi : int, animasikan : bool, 
     # hitung interval nilai t
     dt = 1 / (n + 1)
     # Hitung koordinat tiap titik kurva bezier
-    for i in range(n):
-        t = (i + 1) * dt                                                                                                # ; print(t)
+    for i in range(n + 2):
+        t = i * dt                                                                                                # ; print(t)
         x = (1 - t) ** 2 * Titik_Kontrol[0][0] + 2 * (1 - t) * t * Titik_Kontrol[1][0] + t ** 2 * Titik_Kontrol[2][0]
         y = (1 - t) ** 2 * Titik_Kontrol[0][1] + 2 * (1 - t) * t * Titik_Kontrol[1][1] + t ** 2 * Titik_Kontrol[2][1]
 
@@ -48,14 +48,14 @@ def BF_Quadratik_Bezier(Titik_Kontrol : list, iterasi : int, animasikan : bool, 
 #       parameter animasikan yang menentukan apakah tiap iterasi akan di animasikan atau tidak
 #       parameter pause yang menentukan lama jeda antar animasi
 #   - mengembalikan list of tuple yang
-#       jumlah mid-point yang dihasilkan adalah 2^(iterasi) - 1 (belum termasuk titik kontrol awal dan akhir)
+#       jumlah mid-point yang dihasilkan adalah 2^(iterasi) + 1 (sudah termasuk titik kontrol awal dan akhir)
 def BF_Generalized_Bezier(Titik_Kontrol : list, iterasi : int, animasikan : bool, pause : float) -> list:
     hasil = []
     n = 2 ** iterasi - 1
     dt = 1 / (n + 1)
 
-    for i in range(n):
-        t = (i + 1) * dt
+    for i in range(n + 2):
+        t = i * dt  
         x = 0
         y = 0
         for j in range(len(Titik_Kontrol)):
@@ -120,13 +120,13 @@ def Titik_Bezier(titik_kontrol : list, warna : int, dt : float) -> list:
 #       parameter iterasi yang menentukan tingkat kedetailan kurva bezier
 #       parameter pause yang menentukan lama jeda antar animasi
 #   - mengembalikan list of tuple dengan
-#       jumlah titik yang dihasilkan adalah (2^(iterasi) - 1) (belum termasuk titik kontrol awal dan akhir)
+#       jumlah titik yang dihasilkan adalah (2^(iterasi) + 1) (sudah termasuk titik kontrol awal dan akhir)
 def BF_De_Casteljaus_algorithm(TitiK_Kontrol : list, iterasi : int, pause : float) -> list:
     hasil = []
     n = 2 ** iterasi - 1
     dt = 1 / (n + 1)
 
-    for i in range(n+1):
+    for i in range(n + 2):
         t = i * dt
         p = Titik_Bezier(TitiK_Kontrol, 0, t)
         hasil.append(p[0])
