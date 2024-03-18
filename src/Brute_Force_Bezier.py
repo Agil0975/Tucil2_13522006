@@ -22,13 +22,13 @@ import Animation
 def BF_Quadratik_Bezier(Titik_Kontrol : list, iterasi : int, animasikan : bool, pause : float) -> list:
     # Inisialisasi list of tuple yang akan menampung koordinat titik-titik kurva bezier
     hasil = []
-    # Hitung jumlah titik yang dihasilkan
+    # Hitung jumlah titik yang dihasilkan, belum termasuk titik kontrol awal dan akhir
     n = 2 ** iterasi - 1
     # hitung interval nilai t
     dt = 1 / (n + 1)
     # Hitung koordinat tiap titik kurva bezier
     for i in range(n + 2):
-        t = i * dt                                                                                                # ; print(t)
+        t = i * dt
         x = (1 - t) ** 2 * Titik_Kontrol[0][0] + 2 * (1 - t) * t * Titik_Kontrol[1][0] + t ** 2 * Titik_Kontrol[2][0]
         y = (1 - t) ** 2 * Titik_Kontrol[0][1] + 2 * (1 - t) * t * Titik_Kontrol[1][1] + t ** 2 * Titik_Kontrol[2][1]
 
@@ -51,7 +51,7 @@ def BF_Quadratik_Bezier(Titik_Kontrol : list, iterasi : int, animasikan : bool, 
 #       jumlah mid-point yang dihasilkan adalah 2^(iterasi) + 1 (sudah termasuk titik kontrol awal dan akhir)
 def BF_Generalized_Bezier(Titik_Kontrol : list, iterasi : int, animasikan : bool, pause : float) -> list:
     hasil = []
-    n = 2 ** iterasi - 1
+    n = 2 ** iterasi - 1 # banyak titik yang dihasilkan, belum termasuk titik kontrol awal dan akhir
     dt = 1 / (n + 1)
 
     for i in range(n + 2):
@@ -102,14 +102,16 @@ def list_of_point_dt(p : list, dt : float) -> list:
     return hasil
 
 # fungsi yang mengembalikan titik bezier pada satu waktu iterasi
-def Titik_Bezier(titik_kontrol : list, warna : int, dt : float) -> list:
+def Titik_Bezier(titik_kontrol : list, warna : int, dt : float, animasikan : bool) -> list:
     if len(titik_kontrol) == 1:
-        Animation.animate_without_pause(titik_kontrol, warna)
+        if animasikan:
+            Animation.animate_without_pause(titik_kontrol, warna)
         return titik_kontrol
     else:
         new_kontrol_point = list_of_point_dt(titik_kontrol, dt)
-        Animation.animate_without_pause(new_kontrol_point, (warna + 1) % 7)
-        return Titik_Bezier(new_kontrol_point, (warna + 1) % 7, dt)
+        if animasikan:
+            Animation.animate_without_pause(new_kontrol_point, (warna + 1) % 7)
+        return Titik_Bezier(new_kontrol_point, (warna + 1) % 7, dt, animasikan)
 
 # Algoritma De Casteljau
 # Fungsi yang menghasilkan kurva bezier kuadratik menggunakan metode De Casteljau
@@ -121,21 +123,22 @@ def Titik_Bezier(titik_kontrol : list, warna : int, dt : float) -> list:
 #       parameter pause yang menentukan lama jeda antar animasi
 #   - mengembalikan list of tuple dengan
 #       jumlah titik yang dihasilkan adalah (2^(iterasi) + 1) (sudah termasuk titik kontrol awal dan akhir)
-def BF_De_Casteljaus_algorithm(TitiK_Kontrol : list, iterasi : int, pause : float) -> list:
+def BF_De_Casteljaus_algorithm(TitiK_Kontrol : list, iterasi : int, animasikan : bool, pause : float) -> list:
     hasil = []
-    n = 2 ** iterasi - 1
+    n = 2 ** iterasi - 1 # banyak titik yang dihasilkan, belum termasuk titik kontrol awal dan akhir
     dt = 1 / (n + 1)
 
     for i in range(n + 2):
         t = i * dt
-        p = Titik_Bezier(TitiK_Kontrol, 0, t)
+        p = Titik_Bezier(TitiK_Kontrol, 0, t, animasikan)
         hasil.append(p[0])
         
-        # Menghapus plot sebelumnya
-        plt.pause(pause)
-        plt.clf()
-        # Menggambar ulang plot
-        Animation.animate_without_pause(TitiK_Kontrol, 0)
-        plt.plot([j[0] for j in hasil], [j[1] for j in hasil], c = Animation.COLOUR[(len(TitiK_Kontrol) % 7)-1])
+        if animasikan:
+            # Menghapus plot sebelumnya
+            plt.pause(pause)
+            plt.clf()
+            # Menggambar ulang plot
+            Animation.animate_without_pause(TitiK_Kontrol, 0)
+            plt.plot([j[0] for j in hasil], [j[1] for j in hasil], c = Animation.COLOUR[(len(TitiK_Kontrol) % 7)-1])
 
     return hasil

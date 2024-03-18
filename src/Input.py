@@ -2,13 +2,13 @@
 
 def print_batas() -> None:
 # print batas antar menu
-    print("======================================================")
+    print("==============================================================")
 
 def print_pembuka() -> None:
 # print pembuka program
-    print("+----------------------------------------------------+")
-    print("| Selamat Datang di Program Visualisasi Kurva Bezier |")
-    print("+----------------------------------------------------+")
+    print("+------------------------------------------------------------+")
+    print("|  ~  Selamat Datang di Program Visualisasi Kurva Bezier  ~  |")
+    print("+------------------------------------------------------------+")
 
 def is_float(s : str) -> bool:
 # fungsi untuk mengecek apakah suatu string dapat diubah menjadi float atau tidak
@@ -123,6 +123,7 @@ def input_pause(is_animasi : bool) -> float:
         if is_animasi:
             pause = input("Masukkan lama jeda animasi (dalam detik) : ")
             if is_float(pause) and float(pause) > 0:
+                print_batas()
                 masukan = True
             else:
                 is_ulangi = input("Masukan tidak valid, ingin mengulangi? (y/n) : ")
@@ -193,3 +194,56 @@ def input_titik_kontrol(jenis : int) -> list:
                         #print("Keluar dari program")
                         exit()
     return titik_kontrol
+
+def is_print_points_to_terminal() -> bool:
+# fungsi yang menerima input apakah ingin mencetak list of titik bezier ke layar atau tidak
+    masukan = False
+    while not masukan:
+        print_ke_terminal = input("Apakah ingin mencetak titik bezier ke layar? (y/n) : ")
+        if print_ke_terminal == "y" or print_ke_terminal == "Y":
+            return True
+        elif print_ke_terminal == "n" or print_ke_terminal == "N":
+            return False
+        else:
+            is_ulangi = input("Masukan tidak valid, ingin mengulangi? (y/n) : ")
+            while is_ulangi != "y" and is_ulangi != "Y" and is_ulangi != "n" and is_ulangi != "N":
+                is_ulangi = input("Masukan tidak valid, ingin mengulangi? (y/n) : ")
+            if is_ulangi == "n" or is_ulangi == "N":
+                #print("Keluar dari program")
+                exit()
+
+def ingin_simpan_to_png() -> bool:
+# fungsi yang menerima input apakah ingin menyimpan hasil plot ke dalam file png atau tidak
+    print_batas()
+    masukan = False
+    while not masukan:
+        simpan = input("Apakah ingin menyimpan hasil plot ke dalam file? (y/n) : ")
+        if simpan == "y" or simpan == "Y":
+            return True
+        elif simpan == "n" or simpan == "N":
+            return False
+        else:
+            is_ulangi = input("Masukan tidak valid, ingin mengulangi? (y/n) : ")
+            while is_ulangi != "y" and is_ulangi != "Y" and is_ulangi != "n" and is_ulangi != "N":
+                is_ulangi = input("Masukan tidak valid, ingin mengulangi? (y/n) : ")
+            if is_ulangi == "n" or is_ulangi == "N":
+                #print("Keluar dari program")
+                exit()
+
+def ingin_simpan_to_txt() -> bool:
+# fungsi yang menerima input apakah ingin menyimpan titik-titik kurva bezier ke dalam file txt atau tidak
+    print_batas()
+    masukan = False
+    while not masukan:
+        simpan = input("Apakah ingin menyimpan titik bezier ke dalam file? (y/n) : ")
+        if simpan == "y" or simpan == "Y":
+            return True
+        elif simpan == "n" or simpan == "N":
+            return False
+        else:
+            is_ulangi = input("Masukan tidak valid, ingin mengulangi? (y/n) : ")
+            while is_ulangi != "y" and is_ulangi != "Y" and is_ulangi != "n" and is_ulangi != "N":
+                is_ulangi = input("Masukan tidak valid, ingin mengulangi? (y/n) : ")
+            if is_ulangi == "n" or is_ulangi == "N":
+                #print("Keluar dari program")
+                exit()

@@ -15,13 +15,8 @@ metode = Input.input_method()
 jenis = Input.input_jenis(metode)
 iterasi = Input.input_iterasi()
 titik_kontrol = Input.input_titik_kontrol(jenis)
-
-if jenis != 3:              # jika memilih algoritma de casteljau pasti dianimasikan
-    animasikan = Input.input_animate()
-    pause = Input.input_pause(animasikan)
-else:
-    animasikan = True
-    pause = Input.input_pause(animasikan)
+animasikan = Input.input_animate()
+pause = Input.input_pause(animasikan)
 
 # Memplot seluruh titik kontrol
 Animation.animate_with_pause(titik_kontrol, 0, 1)
@@ -30,38 +25,31 @@ Animation.animate_with_pause(titik_kontrol, 0, 1)
 # Melakukan perhitungan kurva bezier sesuai dengan metode yang dipilih #
 ########################################################################
 if metode == 1: # brute force
-    if jenis == 1 or jenis == 2:          # kuadratik
-        # mencari titik-titik kurva bezier dan memplotnya
-        start = time.time()
-        if jenis == 1:
-            kurva_bezier = Brute_Force_Bezier.BF_Quadratik_Bezier(titik_kontrol, iterasi, animasikan, pause)
-        elif jenis == 2:        # generalized
-            kurva_bezier = Brute_Force_Bezier.BF_Generalized_Bezier(titik_kontrol, iterasi, animasikan, pause)
-        end = time.time()
-
+    # mencari titik-titik kurva bezier dan memplotnya
+    start = time.time()
+    if jenis == 1:
+        kurva_bezier = Brute_Force_Bezier.BF_Quadratik_Bezier(titik_kontrol, iterasi, animasikan, pause)
         # hubungkan tiap titik bezier dengan garis
         Animation.animate_without_pause(kurva_bezier, 1)
         plt.pause(2)
-
-        # hapus semua plot, perbarui plot dengan kurva_bezier akhir (hanya garis tanpa titik)
-        plt.clf()
-        Animation.animate_without_pause(titik_kontrol, 0)
         warna = 1
-        Animation.animate_just_line(kurva_bezier, warna)
-    elif jenis == 3:        # generalized with de casteljau
-        # animasikan algoritma de casteljau
-        start = time.time()
-        kurva_bezier = Brute_Force_Bezier.BF_De_Casteljaus_algorithm(titik_kontrol, iterasi, pause)
-        end = time.time()
-        
-        # hapus semua plot, perbarui plot dengan kurva_bezier akhir (hanya garis tanpa titik)
-        plt.clf()
-        Animation.animate_without_pause(titik_kontrol, 0)
-        # membedakan warna titik bezier dengan titik kontrol
+    elif jenis == 2:        # generalized
+        kurva_bezier = Brute_Force_Bezier.BF_Generalized_Bezier(titik_kontrol, iterasi, animasikan, pause)
+        # hubungkan tiap titik bezier dengan garis
+        Animation.animate_without_pause(kurva_bezier, 1)
+        plt.pause(2)
+        warna = 1
+    elif jenis == 3:        # animasikan dengan algoritma de casteljau
+        kurva_bezier = Brute_Force_Bezier.BF_De_Casteljaus_algorithm(titik_kontrol, iterasi, animasikan, pause)
         warna = (len(titik_kontrol) % 7 - 1)
         if warna == 0:
             warna = 1
-        Animation.animate_just_line(kurva_bezier, warna)
+    end = time.time()
+
+    # hapus semua plot, perbarui plot dengan kurva_bezier akhir (hanya garis tanpa titik)
+    plt.clf()
+    Animation.animate_without_pause(titik_kontrol, 0)
+    Animation.animate_just_line(kurva_bezier, warna)
 else:           # divide and conquer
     # mencari titik-titik kurva bezier dan memplotnya
     start = time.time()
@@ -94,7 +82,9 @@ else:           # divide and conquer
 plt.show()
 
 # Menampilkan titik-titik kurva bezier pada terminal
-Output.print_points(kurva_bezier)
+is_print = Input.is_print_points_to_terminal()
+if is_print:
+    Output.print_points(kurva_bezier)
 
 # Menampilkan waktu eksekusi
 # Mulai dari saat pertama kali melakukan pencarian titik bezier pertama hingga titik bezier terakhir
@@ -105,9 +95,8 @@ print("Waktu eksekusi:", end - start, "detik")
 #####################################
 # Melakukan save hasil kurva bezier #
 #####################################
-Input.print_batas()
-is_save = Output.ingin_simpan()
-if is_save:
+is_save_png = Input.ingin_simpan_to_png()
+if is_save_png:
     nama_file = input("Masukkan nama file (tanpa ekstensi): ")
     # memplot ulang untuk disimpan ke dalam file
     plt.clf()
@@ -116,4 +105,10 @@ if is_save:
     # menyimpan plot ke dalam file
     Output.save_plot_to_png(nama_file + " Plot")                             # menyimpan hasil plot ke dalam file
     Output.save_points_to_txt(titik_kontrol, nama_file + " Titik Kontrol")   # menyimpan titik kontrol ke dalam file
+
+is_save_txt = Input.ingin_simpan_to_txt()
+if is_save_txt:
+    nama_file = input("Masukkan nama file (tanpa ekstensi): ")
     Output.save_points_to_txt(kurva_bezier, nama_file + " Titik Bezier")     # menyimpan titik bezier ke dalam file
+
+Input.print_batas()
