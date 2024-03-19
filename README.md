@@ -6,6 +6,7 @@ Membangun Kurva Bézier dengan Algoritma Titik Tengah berbasis Divide and Conque
 * [Deskripsi Singkat](#deskrips-singkat)
 * [Requirements](#requirements)
 * [Cara Menjalankan Program](#cara-menjalankan-program)
+* [Struktur Program](#struktur-program)
 * [Author](#author)
 
 ## **Deskripsi Singkat**
@@ -28,6 +29,103 @@ Instalasi matplotlib: <br>
 3. Jalankan program dengan mengetikkan: <br>
 `$ python src/main.py `
 4. Masukkan inputan sesuai dengan permintaan program.
+
+## **Struktur Program**
+```
+.
+│   README.md
+|
+├───bin
+|   └───.gitignore
+|
+├───doc
+|   └───Tucil2_13522006.pdf
+|
+└───src
+|    |
+|    └───Animation.py
+|        Brute_Force_Bezier.py
+|        Divide_and_Conquer_Bezier.py
+|        Input.py
+|        Output.py
+|        main.py
+|
+└───test
+     |
+     └───4.2.1 BF Plot.png
+         4.2.1 BF Titik Bezier.txt
+         4.2.1 BF Titik Kontrol.txt
+         4.2.1 DnC Plot.png
+         4.2.1 DnC Titik Bezier.txt
+         4.2.1 DnC Titik Kontrol.txt
+         4.2.2 BF Plot.png
+         4.2.2 BF Titik Bezier.txt
+         4.2.2 BF Titik Kontrol.txt
+         4.2.2 DnC Plot.png
+         4.2.2 DnC Titik Bezier.txt
+         4.2.2 DnC Titik Kontrol.txt
+         4.2.3 BF Plot.png
+         4.2.3 BF Titik Bezier.txt
+         4.2.3 BF Titik Kontrol.txt
+         4.2.3 DnC Plot.png
+         4.2.3 DnC Titik Bezier.txt
+         4.2.3 DnC Titik Kontrol.txt
+         4.2.4 BF Plot.png
+         4.2.4 BF Titik Bezier.txt
+         4.2.4 BF Titik Kontrol.txt
+         4.2.4 DnC Plot.png
+         4.2.4 DnC Titik Bezier.txt
+         4.2.4 DnC Titik Kontrol.txt
+         4.2.5 BF Plot.png
+         4.2.5 BF Titik Bezier.txt
+         4.2.5 BF Titik Kontrol.txt
+         4.2.5 DnC Plot.png
+         4.2.5 DnC Titik Bezier.txt
+         4.2.5 DnC Titik Kontrol.txt
+         4.2.6 BF Plot.png
+         4.2.6 BF Titik Bezier.txt
+         4.2.6 BF Titik Kontrol.txt
+         4.2.6 DnC Plot.png
+         4.2.6 DnC Titik Bezier.txt
+         4.2.6 DnC Titik Kontrol.txt
+         4.3.1 BF Plot.png
+         4.3.1 BF Titik Kontrol.txt
+         4.3.1 DnC Plot.png
+         4.3.1 DnC Titik Kontrol.txt
+         4.3.2 BF Plot.png
+         4.3.2 BF Titik Bezier.txt
+         4.3.2 BF Titik Kontrol.txt
+         4.3.2 DnC Plot.png
+         4.3.2 DnC Titik Bezier.txt
+         4.3.2 DnC Titik Kontrol.txt
+         4.3.3 BF Plot.png
+         4.3.3 BF Titik Bezier.txt
+         4.3.3 BF Titik Kontrol.txt
+         4.3.3 DnC Plot.png
+         4.3.3 DnC Titik Bezier.txt
+         4.3.3 DnC Titik Kontrol.txt
+         4.3.4 BF Plot.png
+         4.3.4 BF Titik Bezier.txt
+         4.3.4 BF Titik Kontrol.txt
+         4.3.4 DnC Plot.png
+         4.3.4 DnC Titik Bezier.txt
+         4.3.4 DnC Titik Kontrol.txt
+         4.3.5 BF Plot.png
+         4.3.5 BF Titik Bezier.txt
+         4.3.5 BF Titik Kontrol.txt
+         4.3.5 DnC Plot.png
+         4.3.5 DnC Titik Bezier.txt
+         4.3.5 DnC Titik Kontrol.txt
+         4.3.6 BF Plot.png
+         4.3.6 BF Titik Bezier.txt
+         4.3.6 BF Titik Kontrol.txt
+         4.3.6 DnC Plot.png
+         4.3.6 DnC Titik Bezier.txt
+         4.3.6 DnC Titik Kontrol.txt
+         Contoh Plot.png
+         Contoh Titik Bezier.txt
+         Contoh Titik Kontrol.txt
+```
 
 ## **Author**
 
