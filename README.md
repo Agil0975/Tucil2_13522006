@@ -6,16 +6,15 @@ Membangun Kurva Bézier dengan Algoritma Titik Tengah berbasis Divide and Conque
 * [Deskripsi Singkat](#deskrips-singkat)
 * [Requirements](#requirements)
 * [Cara Menjalankan Program](#cara-menjalankan-program)
-* [Struktur Program](#struktur-program)
 * [Author](#author)
 
 ## **Deskripsi Singkat**
 Kurva Bézier adalah kurva halus yang sering digunakan dalam desain grafis, animasi, dan manufaktur. Kurva ini dibuat dengan menghubungkan beberapa titik kontrol, yang menentukan bentuk dan arah kurva.
 
-Program "Tucil2_13522006" merupakan program untuk membuat dan memvisualisasikan proses pembuatan Kurva Bézier dengan menggunakan Algoritma Titik Tengah berbasis Divide and Conquer. Selain itu, dalam program ini juga terdapat pilihan untuk membuat Kurva Bézier dengan menggunakan strategi Brute Force sebagai pembanding untuk solusi Divide and Conquer.
+Program "Tucil2_13522006" merupakan program untuk membuat dan memvisualisasikan proses pembuatan Kurva Bézier dengan menggunakan Algoritma Titik Tengah berbasis Divide and Conquer. Selain itu, dalam program ini juga terdapat pilihan untuk membuat Kurva Bézier dengan menggunakan metode Brute Force sebagai pembanding untuk solusi Divide and Conquer.
 
 ## **Requirements**
-Untuk menjalankan program ini, kamu perlu menginstal **Python** pada perangkat yang kamu gunakan.
+Untuk menjalankan program ini, perlu menginstal **Python** pada perangkat yang digunakan.
 
 Selain itu, juga diperlukan library matplotlib untuk melakukan visualisasi.
 Instalasi matplotlib: <br>
@@ -29,32 +28,6 @@ Instalasi matplotlib: <br>
 3. Jalankan program dengan mengetikkan: <br>
 `$ python src/main.py `
 4. Masukkan inputan sesuai dengan permintaan program.
-
-## **Struktur Program**
-```
-.
-│   .gitignore
-│   README.md
-|
-├───bin
-|   └───.gitignore
-|
-├───doc
-|   └───Tucil2_K2_13522006_Agil Fadillah Sabri.pdf
-|
-└───src
-|    |
-|    └───Animation.py
-|        Brute_Force_Bezier.py
-|        Divide_and_Conquer_Bezier.py
-|        Input.py
-|        Output.py
-|        main.py
-|
-└───test
-     |
-     └───
-```
 
 ## **Author**
 

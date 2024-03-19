@@ -16,4 +16,4 @@ def save_points_to_txt(points : list, filename : str) -> None:
     with open("test/" + filename + ".txt", "w") as file:
         for point in points:
             file.write(str(point[0]) + " " + str(point[1]) + "\n")
-    print("List berhasil disimpan ke dalam file " + filename + ".txt")
+    print("Koordinat titik berhasil disimpan ke dalam file " + filename + ".txt")

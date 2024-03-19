@@ -27,7 +27,7 @@ def BF_Quadratik_Bezier(Titik_Kontrol : list, iterasi : int, animasikan : bool, 
     # hitung interval nilai t
     dt = 1 / (n + 1)
     # Hitung koordinat tiap titik kurva bezier
-    for i in range(n + 2):
+    for i in range(n + 2):          # ditambah 2 untuk mengikutsertakan titik kontrol awal dan akhir
         t = i * dt
         x = (1 - t) ** 2 * Titik_Kontrol[0][0] + 2 * (1 - t) * t * Titik_Kontrol[1][0] + t ** 2 * Titik_Kontrol[2][0]
         y = (1 - t) ** 2 * Titik_Kontrol[0][1] + 2 * (1 - t) * t * Titik_Kontrol[1][1] + t ** 2 * Titik_Kontrol[2][1]
@@ -54,7 +54,7 @@ def BF_Generalized_Bezier(Titik_Kontrol : list, iterasi : int, animasikan : bool
     n = 2 ** iterasi - 1 # banyak titik yang dihasilkan, belum termasuk titik kontrol awal dan akhir
     dt = 1 / (n + 1)
 
-    for i in range(n + 2):
+    for i in range(n + 2): # ditambah 2 untuk untuk mengikutsertakan titik kontrol awal dan akhir
         t = i * dt  
         x = 0
         y = 0

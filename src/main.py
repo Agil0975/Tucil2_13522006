@@ -19,7 +19,7 @@ animasikan = Input.input_animate()
 pause = Input.input_pause(animasikan)
 
 # Memplot seluruh titik kontrol
-Animation.animate_with_pause(titik_kontrol, 0, 1)
+Animation.animate_with_pause(titik_kontrol, 0, pause)
 
 ########################################################################
 # Melakukan perhitungan kurva bezier sesuai dengan metode yang dipilih #
@@ -45,11 +45,6 @@ if metode == 1: # brute force
         if warna == 0:
             warna = 1
     end = time.time()
-
-    # hapus semua plot, perbarui plot dengan kurva_bezier akhir (hanya garis tanpa titik)
-    plt.clf()
-    Animation.animate_without_pause(titik_kontrol, 0)
-    Animation.animate_just_line(kurva_bezier, warna)
 else:           # divide and conquer
     # mencari titik-titik kurva bezier dan memplotnya
     start = time.time()
@@ -73,12 +68,16 @@ else:           # divide and conquer
     Animation.animate_without_pause(titik_kontrol, 0)
     Animation.animate_without_pause(kurva_bezier, warna)
     plt.pause(2)
-    
-    # hapus semua plot, perbarui plot dengan kurva_bezier akhir (hanya garis tanpa titik)
-    plt.clf()
-    Animation.animate_without_pause(titik_kontrol, 0)
-    Animation.animate_just_line(kurva_bezier, warna)
 
+# hapus semua plot, perbarui plot dengan kurva_bezier akhir (hanya garis tanpa titik)
+plt.clf()
+# titik kontrol
+plt.scatter([i[0] for i in titik_kontrol], [i[1] for i in titik_kontrol], c = Animation.COLOUR[0])
+plt.plot([i[0] for i in titik_kontrol], [i[1] for i in titik_kontrol],  label = "Titik Kontrol", c = Animation.COLOUR[0])
+# kurva bezier
+plt.plot([i[0] for i in kurva_bezier], [i[1] for i in kurva_bezier], label = "Kurva Bezier", c = Animation.COLOUR[warna])
+
+plt.legend()
 plt.show()
 
 # Menampilkan titik-titik kurva bezier pada terminal
